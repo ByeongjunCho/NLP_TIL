@@ -1,5 +1,7 @@
 # Confusion Matrix Code
 
+[Multi Class Confusion Matrix 참고사항](https://nittaku.tistory.com/295)
+
 ```python
 def plot_confusion_matrix(cm, target_names=None, cmap=None, normalize=True, labels=True, title='Confusion matrix', save_name='dummy'):
     accuracy = np.trace(cm) / float(np.sum(cm))
@@ -9,7 +11,7 @@ def plot_confusion_matrix(cm, target_names=None, cmap=None, normalize=True, labe
         cmap = plt.get_cmap('Blues')
 
     if normalize:
-        cm = cm.astype('float') / cm.sum(axis=1)[:, np.newaxis]
+        cm = cm.astype('float') / cm.sum(axis=1)[:, np.newaxis] # Recall
         
     plt.figure(figsize=(20, 20))  # 전체 figure size
     plt.imshow(cm, interpolation='nearest', cmap=cmap)
@@ -50,3 +52,20 @@ def plot_confusion_matrix(cm, target_names=None, cmap=None, normalize=True, labe
 * label : confusion matrix label(iterator)
 * title : confusion matrix title(str)
 * save_name : filename(str)
+
+
+
+## classification report
+
+[sklearn classification_report](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.classification_report.html)
+
+```python
+from sklearn.metrics import classification_report
+y_true = [0, 1, 2, 2, 2]
+y_pred = [0, 0, 2, 2, 1]
+target_names = ['class 0', 'class 1', 'class 2']
+print(classification_report(y_true, y_pred, target_names=target_names, output_dict=False))
+```
+
+
+
