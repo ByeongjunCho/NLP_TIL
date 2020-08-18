@@ -8,7 +8,7 @@ from argparse import ArgumentParser
 from gpt2 import GPT2
 
 
-def _shape_input(x):
+def _shape_input(x): # flatten 함수
     """shape batch of images for input into GPT2 model"""
     x = x.view(x.shape[0], -1)  # flatten images into sequences
     x = x.transpose(0, 1).contiguous()  # to shape [seq len, batch]

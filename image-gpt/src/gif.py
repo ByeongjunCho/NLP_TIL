@@ -58,7 +58,7 @@ def main(args):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("checkpoint")
+    parser.add_argument("--checkpoint", default='../models/mnist_gen.ckpt')
     parser.add_argument("--rows", type=int, default=5)
     parser.add_argument("--cols", type=int, default=5)
     parser.add_argument("--fps", type=int, default=20)

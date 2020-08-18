@@ -61,7 +61,8 @@ if __name__ == "__main__":
     subparsers = parser.add_subparsers()
     parser_train = subparsers.add_parser("train")
     parser_train.add_argument("--pretrained", type=str, default=None)
-    parser_train.add_argument("-n", "--name", type=str, required=True)
+    # parser_train.add_argument("-n", "--name", type=str, required=True)
+    parser_train.add_argument("-n", "--name", type=str, default='fmnist_gen')
     parser_train.set_defaults(func=train)
 
     parser_test = subparsers.add_parser("test")
@@ -69,4 +70,8 @@ if __name__ == "__main__":
     parser_test.set_defaults(func=test)
 
     args = parser.parse_args()
+    try:
+        func = args.func
+    except AttributeError:
+        parser.error("too few arguments")
     args.func(args)
